@@ -1,0 +1,49 @@
+<%= form_with(model: picture, local: true, url:choose_new_or_edit) do |form| %>
+  <% if picture.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(picture.errors.count, "error") %> prohibited this picture from being saved:</h2>
+
+      <ul>
+      <% picture.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <% if picture.image.url == nil %>
+        <div class="field">
+            <strong class="top-font-color">画像を選択してください：</strong>
+            <%= form.file_field :image, id: :feed_image %>
+            <%= form.hidden_field :image_cache %>
+        </div>
+        <br>
+    <% else %>
+        <p>
+          <strong class="top-font-color">画像</strong>
+        </p>
+        <p>
+            <%= image_tag(picture.image) %>
+            <%= form.file_field :image, id: :feed_image %>
+            <%= form.hidden_field :image_cache %>
+        </p>    
+    <% end %>
+  </div>
+  
+  
+  <div class="field">
+    <%= form.label :キャプション %><br>
+    <div class="form-group">
+      <div class="row">
+      <div class="col-md-12">
+      <%= form.text_area :description, id: :picture_description, :size=>"50x5" %>
+      </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= form.submit "シェアする", class: "btn btn-info col-md-offset-8 col-md-3 col-sm-offset-8 col-sm-3 col-xs-offset-8 col-xs-3" %>
+  </div>
+<% end %>

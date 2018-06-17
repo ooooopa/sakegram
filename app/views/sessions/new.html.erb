@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="signin">
+      <h1>Sakegram</h1>
+      
+      <% flash.each do |key, value| %>
+        <%= content_tag(:div, value, class: "#{key}") %>
+      <% end %>
+      
+      <%= form_with(scope: :session, url: sessions_path, local: true) do |f| %>
+        <table>
+        <tr>
+          <td><%= f.label :email, {class:'top-font-color'}  %></td>
+          <td><%= f.email_field :email %></td>
+        </tr>
+        <tr>
+          <td><%= f.label :password, {class:'top-font-color'} %></td>
+          <td><%= f.password_field :password %></td>
+        </tr>
+        </table>
+        <%= f.submit "Log in", {class:"btn btn-info"} %>
+      <% end %>
+    </div>
+</div>
+
+<div class="container">
+    <div class="login">
+        <h3>アカウントをお持ちでないですか？</h3>
+        <%= link_to "登録する", new_user_path %>
+    </div>
+</div>

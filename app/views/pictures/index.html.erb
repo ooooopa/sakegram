@@ -1,0 +1,20 @@
+<div class="container">
+  
+  
+  <h1>投稿一覧</h1>
+    <% @pictures.each do |picture| %>
+      <% user_id = @user.find(picture.user_id) %>
+      <% name = user_id.name %>
+      <table class="table table-bordered">
+        <tr><td id="index-name"><%= name %></td></tr>
+        <tr><td class="index-td" id="index-image"><%= image_tag(picture.image) %></td></tr>
+        <tr><td class="index-td"><%= picture.description %></td></tr>
+        <% if picture.user_id == current_user.id %>
+          <tr><td class="index-td" id="index-action"><%= link_to 'edit', edit_picture_path(picture.id) %> | <%= link_to 'delete', picture_path(picture.id), method: :delete %></td></tr>
+        <% else %>
+          <tr><td class="index-td" id="index-action"><%= link_to 'いいね！', favorites_path(picture_id: picture.id), method: :post %> | <%= link_to 'いいねを解除する', favorite_path(picture.id), method: :delete  %>
+          </td></tr>
+        <% end %>
+      </table>
+    <% end %>
+</div>

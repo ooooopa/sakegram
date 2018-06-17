@@ -1,0 +1,30 @@
+<div class="container">
+    <div class="panel panel-info">
+        <div class="panel-heading">
+            <h4>以下の内容で投稿していいですか？</h4>
+        </div>
+    
+
+        <div class="panel-body">
+            <%= form_with(model:@picture, url:pictures_path, local:true) do |form| %>
+
+                <%= image_tag(@picture.image, :class => "center-block") if @picture.image.url %>
+                <%= form.hidden_field :image_cache %>
+                <%= hidden_field_tag :"cache[image]",@picture.image.cache_name %>
+                <%= form.hidden_field :description %>
+                <p><%= @picture.description %></p>
+                <div class="row">
+                <br>
+                <%= form.submit "シェアする", class: "btn btn-info col-md-offset-6 col-md-2" %>
+            <% end %>
+        
+            <%= form_with(model:@picture, url:new_picture_path, local:true, method:"get") do |form| %>
+                <%= form.hidden_field :description %>
+                <%= form.hidden_field :image %>
+                <%= hidden_field_tag :"cache[image]",@picture.image.cache_name %>
+                <%= form.submit "戻る", name: "back", class: "btn btn-info col-md-offset-1 col-md-2" %>
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>

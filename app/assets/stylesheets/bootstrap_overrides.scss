@@ -1,0 +1,60 @@
+.navbar {
+    position: relative;
+    min-height: 50px;
+    /*border: 1px solid transparent;*/
+    border-radius:0px;
+    margin-bottom:0px;
+}
+
+.navbar-default{
+    background-color:#dc346e;
+    border-color: #dc346e;
+    color:white;
+}
+
+.navbar-default .navbar-nav li a{
+    color:white;
+}
+
+.navbar-default .navbar-brand{
+    color:white;
+}
+
+.panel{
+    margin-top:30px;
+    margin-bottom:30px;
+}
+
+.table{
+    margin-top:30px;
+}
+
+.table tbody tr td{
+    vertical-align:middle;
+}
+
+.btn-danger{
+    background-color:#d7847e;
+    border-color:#d7847e;
+}
+
+.btn-danger:hover{
+    background-color:#d7847e;
+    border-color:#d7847e;
+}
+
+.btn-info{
+    background-color:#3897f0;
+    border-color:#3897f0;
+}
+
+.btn-info:hover{
+    background-color:#3897f0;
+    border-color:#3897f0;
+}
+
+#error_explanation{
+  color:#b94483;
+}
+
+
